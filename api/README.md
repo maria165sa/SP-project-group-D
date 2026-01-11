@@ -388,12 +388,4 @@ CORS_ORIGINS = [
 
 ## License
 
-This project is part of a master's thesis on biomedical engineering.
-
-## Contact
-
-For questions or issues, please contact the development team.
-
----
-
-**Built with FastAPI** | **Powered by scikit-learn**
+This project is part of a project from the scientific programming course in the Master's in Health Data Sience form Universitat Rovira i Virgili.
