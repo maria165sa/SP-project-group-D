@@ -1,0 +1,2 @@
+The folder "Results_v0" contain the figures and comparison_table of the models developed.
+They had similar but lower performance results.
