@@ -1,0 +1,9 @@
+services:
+  sp-backend:
+    build:
+      context: ..          # Use the parent folder (repo root) as build context
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../models:/app/models
