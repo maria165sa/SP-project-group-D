@@ -15,7 +15,8 @@ COPY . .
 
 # Build the React app and pass VITE_API_URL from environment
 ARG VITE_API_URL
-RUN VITE_API_URL=$VITE_API_URL npm run build
+ENV VITE_API_URL=$VITE_API_URL
+RUN npm run build
 
 # Install a simple static server
 RUN npm install -g serve
