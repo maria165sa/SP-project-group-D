@@ -13,8 +13,9 @@ RUN npm install
 # Copy all frontend files
 COPY . .
 
-# Build the React app
-RUN npm run build
+# Build the React app and pass VITE_API_URL from environment
+ARG VITE_API_URL
+RUN VITE_API_URL=$VITE_API_URL npm run build
 
 # Install a simple static server
 RUN npm install -g serve
