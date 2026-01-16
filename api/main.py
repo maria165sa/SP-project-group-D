@@ -20,10 +20,15 @@ app = FastAPI(
     description=settings.API_DESCRIPTION,
 )
 
+CORS_ORIGINS = [
+    "http://localhost:3000",  # optional for local dev
+    "https://sp-project-group-d-6.onrender.com"
+]
+
 # Add CORS middleware for frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
+    allow_origins=CORS_ORIGINS,  # use the local variable you defined
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
