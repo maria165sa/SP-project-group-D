@@ -1,0 +1,121 @@
+{
+    "model_name": "AdaBoost",
+    "model_type": "AdaBoostClassifier",
+    "scaling_type": "standard_scaled",
+    "training_date": "2026-01-15 19:28:41",
+    "feature_names": [
+        "bmi",
+        "hypertension",
+        "pulse_pressure",
+        "cigarettes_per_day",
+        "total_cholesterol",
+        "glucose",
+        "heart_rate",
+        "age_group_code"
+    ],
+    "n_features": 8,
+    "test_metrics": {
+        "accuracy": 0.49292452830188677,
+        "precision": 0.20315581854043394,
+        "recall": 0.7984496124031008,
+        "f1": 0.3238993710691824,
+        "pr_auc": 0.2915841145768802,
+        "roc_auc": 0.6779495638861036,
+        "threshold": 0.4365800733669104,
+        "inference_time": 0.027765750885009766,
+        "inference_time_per_sample": 3.274263076062473e-05,
+        "model": "AdaBoost"
+    },
+    "tuned_hyperparameters": {
+        "xgboost": {
+            "n_estimators": 583,
+            "max_depth": 3,
+            "learning_rate": 0.09551409000498795,
+            "subsample": 0.8797047767216731,
+            "colsample_bytree": 0.819642101133928,
+            "min_child_weight": 8,
+            "gamma": 0.5732522977673149,
+            "reg_alpha": 2.743326150768452,
+            "reg_lambda": 1.1699277532090642,
+            "eval_metric": "auc",
+            "random_state": 42,
+            "scale_pos_weight": 5.58252427184466,
+            "use_label_encoder": false
+        },
+        "lightgbm": {
+            "n_estimators": 460,
+            "num_leaves": 67,
+            "learning_rate": 0.16341052899574365,
+            "subsample": 0.7040367122597613,
+            "colsample_bytree": 0.3264592689227666,
+            "min_data_in_leaf": 89,
+            "lambda_l1": 0.3726657767276319,
+            "lambda_l2": 1.0945915800143893,
+            "eval_metric": "auc",
+            "random_state": 42,
+            "class_weight": "balanced",
+            "verbose": -1
+        },
+        "adaboost": {
+            "n_estimators": 276,
+            "learning_rate": 0.40598089238987783,
+            "random_state": 42
+        }
+    },
+    "final_weighted_scores": {
+        "XGBoost": 0.4969412728703733,
+        "LightGBM": 0.421043438884756,
+        "AdaBoost": 0.7261495832929025,
+        "Stacking_ET": 0.6951752541751572,
+        "Stacking_SVM": 0.6171038587185043
+    },
+    "optimal_threshold": 0.4365800733669104,
+    "optimal_recall": 0.8543689320388349,
+    "learning_curve": {
+        "train_sizes": [
+            271,
+            881,
+            1491,
+            2101,
+            2712
+        ],
+        "train_auc": [
+            0.9416967212711892,
+            0.7784670343451543,
+            0.7475574300065313,
+            0.7385229229855078,
+            0.7358566905867455
+        ],
+        "val_auc": [
+            0.6321756015196286,
+            0.6843056141831996,
+            0.6882279442802871,
+            0.6960574081891093,
+            0.7132815533980582
+        ]
+    },
+    "validation_curve": {
+        "param_name": "n_estimators",
+        "param_range": [
+            50,
+            100,
+            200,
+            400
+        ],
+        "train_auc": [
+            0.7288019206416209,
+            0.7323106796116505,
+            0.7341547066272689,
+            0.738604685521317
+        ],
+        "val_auc": [
+            0.7103351625158295,
+            0.7106255804136767,
+            0.7125301815111863,
+            0.7118210215280708
+        ]
+    },
+    "imbalance_handling": "scale_pos_weight / class_weight",
+    "hyperparameter_tuning": "Optuna (boosting) + threshold optimization",
+    "label_encoders": null
+}
