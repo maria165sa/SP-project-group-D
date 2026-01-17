@@ -1,3 +1,6 @@
+# Render Blueprint para deployment automático
+# Coloca este archivo en la raíz del proyecto
+
 services:
   # Backend - FastAPI
   - type: web
@@ -19,13 +22,12 @@ services:
   # Frontend - React (Static Site)
   - type: web
     name: sp-frontend
+    runtime: static
+    region: frankfurt
     plan: free
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     rootDir: frontend
-    envVars:
-      - key: NODE_VERSION
-        value: "18"
     routes:
       - type: rewrite
         source: /*
