@@ -21,8 +21,9 @@ app = FastAPI(
 )
 
 CORS_ORIGINS = [
-    "http://localhost:5173",  # optional for local dev
+    "http://localhost:5173",
     "http://localhost:3000",
+    "https://sp-frontend.onrender.com", 
     "https://sp-project-group-d-6.onrender.com"
 ]
 
