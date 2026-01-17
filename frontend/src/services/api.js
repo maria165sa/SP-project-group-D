@@ -5,8 +5,8 @@
 // En producción usa la URL de Render, en desarrollo usa localhost
 const API_BASE_URL = import.meta.env.VITE_API_URL || 
                      (import.meta.env.PROD 
-                       ? 'https://sp-backend.onrender.com'  // ✅ Producción (actualizar con tu URL real)
-                       : 'http://localhost:8000');          // 🏠 Desarrollo local
+                       ? 'https://sp-backend-qkjs.onrender.com' 
+                       : 'http://localhost:8000');
 
 console.log('🔗 API URL:', API_BASE_URL); // Para debugging
 
