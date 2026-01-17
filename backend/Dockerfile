@@ -1,4 +1,4 @@
-# Base image
+# Backend Dockerfile - VERSIÓN CORREGIDA
 FROM python:3.10-slim
 
 # Environment settings
@@ -12,9 +12,11 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy API code and models
+# Copy API code SOLAMENTE (los models se montan con volume)
 COPY api /app/api
-COPY models /app/models
+
+# Copy el main.py si está en backend/
+COPY main.py /app/main.py
 
 # Expose FastAPI port
 EXPOSE 8000

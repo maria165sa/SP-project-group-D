@@ -1,19 +1,29 @@
-version: "3.9"
-
 services:
   sp-backend:
     build:
-      context: .         # repo root
-      dockerfile: backend/Dockerfile
-
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
       - ./models:/app/models
+    networks:
+      - app-network
 
   sp-frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      # ✅ Cambia esto:
+      args:
+        VITE_API_URL: http://localhost:8000  # usa localhost en vez de sp-backend
     ports:
       - "3000:3000"
+    depends_on:
+      - sp-backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
