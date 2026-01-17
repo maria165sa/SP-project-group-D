@@ -8,15 +8,15 @@ services:
     runtime: python
     region: frankfurt
     plan: free
-    buildCommand: pip install --no-cache-dir -r requirements.txt
+    buildCommand: pip install --no-cache-dir -r requirements.txt && cp -r ../models ./models
     startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHONUNBUFFERED
         value: "1"
       - key: PYTHONDONTWRITEBYTECODE
         value: "1"
-      - key: PYTHON_VERSION  # ← AÑADE ESTO
-        value: "3.11.5"      # ← AÑADE ESTO
+      - key: PYTHON_VERSION
+        value: "3.11.5"
     rootDir: backend
     healthCheckPath: /health
     autoDeploy: true
