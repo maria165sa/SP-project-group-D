@@ -98,9 +98,9 @@ def predict(patient: PatientInput):
         prediction, probability = model_service.predict(features)
         
         # Determine risk level
-        if probability < 0.3:
+        if probability < 0.25:
             risk_level = "Low"
-        elif probability < 0.6:
+        elif probability < 0.5:
             risk_level = "Medium"
         else:
             risk_level = "High"
