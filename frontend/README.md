@@ -8,12 +8,12 @@ This is a React-based frontend that provides an intuitive interface for healthca
 
 ## Features
 
-- ✅ **Interactive Form**: Easy-to-use patient data entry with validation
-- ✅ **Real-time Predictions**: Instant risk assessment upon form submission
-- ✅ **Visual Results**: Color-coded risk levels and interactive pie chart
-- ✅ **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
-- ✅ **Professional UI**: Clean, modern interface built with Tailwind CSS
-- ✅ **Error Handling**: Clear error messages and loading states
+- **Interactive Form**: Easy-to-use patient data entry with validation
+- **Real-time Predictions**: Instant risk assessment upon form submission
+- **Visual Results**: Color-coded risk levels and interactive pie chart
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **Professional UI**: Clean, modern interface built with Tailwind CSS
+- **Error Handling**: Clear error messages and loading states
 
 ## Tech Stack
 
@@ -43,27 +43,6 @@ npm run dev
 ```
 
 The application will be available at `http://localhost:5173`
-
-## Project Structure
-```
-frontend/
-├── src/
-│   ├── components/
-│   │   ├── PatientForm.jsx      # Patient data input form
-│   │   ├── ResultDisplay.jsx    # Prediction results display
-│   │   └── RiskChart.jsx        # Risk distribution pie chart
-│   ├── services/
-│   │   └── api.js               # API communication layer
-│   ├── App.jsx                  # Main application component
-│   ├── main.jsx                 # Application entry point
-│   └── index.css                # Tailwind CSS configuration
-├── public/                      # Static assets
-├── index.html                   # HTML template
-├── package.json                 # Dependencies and scripts
-├── vite.config.js              # Vite configuration
-├── tailwind.config.js          # Tailwind CSS configuration
-└── postcss.config.js           # PostCSS configuration
-```
 
 ## Usage
 
@@ -188,120 +167,3 @@ To change the API endpoint, edit `src/services/api.js`:
 ```javascript
 const API_BASE_URL = 'http://your-api-url.com';
 ```
-
-## Styling
-
-### Tailwind CSS
-
-The application uses Tailwind CSS utility classes for styling:
-
-- **Responsive Design**: Mobile-first approach with breakpoints
-- **Color Scheme**: 
-  - Low Risk: Green (`bg-green-100`)
-  - Medium Risk: Yellow (`bg-yellow-100`)
-  - High Risk: Red (`bg-red-100`)
-- **Typography**: Clean, readable fonts with proper hierarchy
-
-### Customization
-
-To customize styles, edit `tailwind.config.js`:
-```javascript
-export default {
-  theme: {
-    extend: {
-      colors: {
-        // Add custom colors
-      },
-    },
-  },
-}
-```
-
-## Build for Production
-```bash
-# Create optimized production build
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-The built files will be in the `dist/` directory.
-
-## Deployment
-
-### Option 1: Static Hosting (Netlify, Vercel)
-```bash
-npm run build
-# Deploy the dist/ folder
-```
-
-### Option 2: Docker
-```dockerfile
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-EXPOSE 5173
-CMD ["npm", "run", "preview"]
-```
-
-## Troubleshooting
-
-### API Connection Error
-
-**Problem**: "Failed to get prediction. Make sure the API is running..."
-
-**Solution**: 
-1. Verify the API is running: `http://localhost:8000/health`
-2. Check CORS is enabled in the API
-3. Verify the API URL in `src/services/api.js`
-
-### Chart Not Displaying
-
-**Problem**: Risk chart not rendering
-
-**Solution**:
-1. Check browser console for errors
-2. Verify Recharts is installed: `npm install recharts`
-3. Clear browser cache
-
-### Styling Issues
-
-**Problem**: Tailwind styles not applied
-
-**Solution**:
-1. Verify `tailwind.config.js` content paths
-2. Check `index.css` has Tailwind directives
-3. Restart dev server: `npm run dev`
-
-## Browser Support
-
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-
-## Performance
-
-- **Lighthouse Score**: 95+ (Performance, Accessibility, Best Practices, SEO)
-- **First Contentful Paint**: < 1s
-- **Time to Interactive**: < 2s
-
-## Accessibility
-
-- Semantic HTML elements
-- ARIA labels where appropriate
-- Keyboard navigation support
-- Screen reader compatible
-- Color contrast compliance (WCAG AA)
-
-## Contact
-
-For questions or issues, please contact the development team.
-
----
-
-**Built with React + Vite** | **Styled with Tailwind CSS** | **Powered by FastAPI Backend**

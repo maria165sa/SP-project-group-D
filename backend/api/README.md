@@ -6,19 +6,6 @@ RESTful API for predicting 10-year coronary heart disease risk based on patient 
 
 This API provides endpoints to predict the risk of developing coronary heart disease (CHD) within the next 10 years. It uses a trained Support Vector Machine (SVM) model with StandardScaler preprocessing, achieving reliable risk stratification for cardiovascular disease prevention.
 
-## Table of Contents
-
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Running the API](#running-the-api)
-- [API Endpoints](#api-endpoints)
-- [Request/Response Examples](#requestresponse-examples)
-- [Project Structure](#project-structure)
-- [Model Details](#model-details)
-- [Development](#development)
-- [Troubleshooting](#troubleshooting)
-
 ## Features
 
 - **Risk Prediction**: Predicts 10-year CHD risk from standard medical measurements
@@ -32,17 +19,6 @@ This API provides endpoints to predict the risk of developing coronary heart dis
 
 - Python 3.11+
 - Dependencies listed in `requirements.txt`
-
-### Core Dependencies
-```txt
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-pydantic==2.5.0
-scikit-learn==1.6.1
-pandas==2.1.3
-numpy==1.26.2
-joblib==1.3.2
-```
 
 ## Installation
 
@@ -82,11 +58,6 @@ python create_scaler.py
 ### Development Mode
 ```bash
 uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-### Production Mode
-```bash
-uvicorn api.main:app --host 0.0.0.0 --port 8000 --workers 4
 ```
 
 The API will be available at:
@@ -241,23 +212,6 @@ print(f"Risk Level: {result['risk_level']}")
 print(f"Probability: {result['probability']:.2%}")
 ```
 
-## Project Structure
-```
-api/
-├── __init__.py
-├── main.py                     # FastAPI application entry point
-├── core/
-│   ├── __init__.py
-│   └── config.py               # Configuration settings
-├── schemas/
-│   ├── __init__.py
-│   └── prediction.py           # Pydantic models for request/response
-└── services/
-    ├── __init__.py
-    ├── feature_service.py      # Feature engineering functions
-    └── model_service.py        # Model loading and prediction logic
-```
-
 ## Model Details
 
 ### Model Type
@@ -314,78 +268,3 @@ After preprocessing, these 8 features are passed to the model:
   - Low: probability < 0.3
   - Medium: 0.3 ≤ probability < 0.6
   - High: probability ≥ 0.6
-
-## Development
-
-### Running Tests
-```bash
-# Run API validation tests (if available)
-python tests/test_api.py
-```
-
-### Code Style
-
-The codebase follows these conventions:
-- **Docstrings**: All functions have descriptive docstrings
-- **Type Hints**: Used throughout for better IDE support
-- **Comments**: In English, professional tone
-- **Naming**: Clear, descriptive variable and function names
-
-### Adding New Features
-
-1. Update `api/schemas/prediction.py` for new input fields
-2. Modify `api/services/feature_service.py` for feature engineering
-3. Update this README with new field descriptions
-
-## Troubleshooting
-
-### Model Not Found
-
-**Error**: `FileNotFoundError: Model file not found`
-
-**Solution**: Ensure model files exist in `models/` directory:
-```bash
-ls models/
-# Should show:
-# best_model__standard_scaled__svm__class_weight.pkl
-# scaler_standard.pkl
-```
-
-### Scaler Not Found
-
-**Error**: `FileNotFoundError: Scaler file not found`
-
-**Solution**: Run the scaler creation script:
-```bash
-python create_scaler.py
-```
-
-### Import Errors
-
-**Error**: `ModuleNotFoundError: No module named 'api'`
-
-**Solution**: Ensure you're running from the project root and the virtual environment is activated:
-```bash
-# Check current directory
-pwd  # Should be project root
-
-# Activate venv
-venv\Scripts\activate  # Windows
-source venv/bin/activate  # Linux/Mac
-```
-
-### CORS Issues
-
-**Error**: Frontend cannot connect to API
-
-**Solution**: Update CORS origins in `api/core/config.py`:
-```python
-CORS_ORIGINS = [
-    "http://localhost:3000",
-    "http://your-frontend-domain.com"
-]
-```
-
-## License
-
-This project is part of a project from the scientific programming course in the Master's in Health Data Sience form Universitat Rovira i Virgili.
