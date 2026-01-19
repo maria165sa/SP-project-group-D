@@ -92,7 +92,7 @@ function App() {
         {/* Footer */}
         <div className="mt-8 text-center text-sm text-gray-600">
           <p>
-            Based on Framingham Heart Study data • For educational purposes only
+            Project for the Health Data Science Master's, Scientific Programming (Group D), DEMO DEPLOYMENT • For educational purposes only
           </p>
         </div>
       </div>

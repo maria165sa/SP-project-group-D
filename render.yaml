@@ -1,0 +1,35 @@
+# Render Blueprint para deployment automático
+# Coloca este archivo en la raíz del proyecto
+
+services:
+  # Backend - FastAPI
+  - type: web
+    name: sp-backend
+    runtime: python
+    region: frankfurt
+    plan: free
+    buildCommand: pip install --no-cache-dir -r requirements.txt && cp -r ../models ./models
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: PYTHONDONTWRITEBYTECODE
+        value: "1"
+      - key: PYTHON_VERSION
+        value: "3.11.5"
+    rootDir: backend
+    healthCheckPath: /health
+    autoDeploy: true
+
+  # Frontend - React (Static Site)
+  - type: web
+    name: sp-frontend
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    rootDir: frontend
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    autoDeploy: true
